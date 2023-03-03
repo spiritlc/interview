@@ -5,8 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="声明提前、变量提升,  ">
-    <meta name="description" content="定义 在js作用域中，js代码自上而下执行之前，浏览器会把所有带 var&amp;#x2F;function 关键字进行提前声明或定义。带 var 的关键字只是提前声明，带 function 关键字会把声明和定义都提前。
-题目123console.">
+    <meta name="description" content="定义
+在js作用域中，js代码自上而下执行之前，浏览器会把所有带 var/function 关键字进行提前声明或定义。带 var 的关键字只是提前声明，带 function 关键字会把声明和定义都提前。
+题目
+console.log(x =">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -261,52 +263,82 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/interview/libs/prism/prism.min.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p> 在js作用域中，js代码自上而下执行之前，浏览器会把所有带 var&#x2F;function 关键字进行提前声明或定义。带 var 的关键字只是提前声明，带 function 关键字会把声明和定义都提前。</p>
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x === <span class="literal">undefined</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(x)</span><br><span class="line"><span class="keyword">var</span> x = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+                <h2 id="定义">定义</h2>
+<p>在js作用域中，js代码自上而下执行之前，浏览器会把所有带 var/function 关键字进行提前声明或定义。带 var 的关键字只是提前声明，带 function 关键字会把声明和定义都提前。</p>
+<h2 id="题目">题目</h2>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">3</span></code></pre>
 <details>
 <summary>查看答案</summary>
-<pre><code>
- // true 
- // undefined
-</code></pre>
+<blockquote>
+<p>// true<br>
+// undefined</p>
+</blockquote>
 </details>
+<hr>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">test();</span><br><span class="line"></span><br><span class="line">function test() &#123;</span><br><span class="line">  console.log(&quot;测试函数声明提升&quot;);</span><br><span class="line">&#125;</span><br><span class="line">testExpression();</span><br><span class="line">var testExpression = function() &#123;</span><br><span class="line">  console.log(&quot;测试函数表达式提升&quot;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"测试函数声明提升"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">testExpression</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> <span class="token function-variable function">testExpression</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"测试函数表达式提升"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></code></pre>
 <details>
 <summary>查看答案</summary>
-<pre><code>
- // 测试函数声明提升 
- // 报错 Uncaught ReferenceError: testExpression is not defined
-</code></pre>
+<blockquote>
+<p>// 测试函数声明提升<br>
+// 报错 Uncaught ReferenceError: testExpression is not defined</p>
+</blockquote>
 </details>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var test = function () &#123;</span><br><span class="line">  console.log(1)</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">function test () &#123;</span><br><span class="line">  console.log(2)</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">test() // 1</span><br></pre></td></tr></table></figure>
+<hr>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">test</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+ 
+<span class="token keyword">function</span> <span class="token function">test</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+ 
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">// 1</span></code></pre>
 <details>
 <summary>查看答案</summary>
-<pre><code>
- // 1
- 执行顺序：
-  1、var test;
-  2、function test () &#123;
-    console.log(2)
-  &#125;
-  3、test = function () &#123;
-    console.log(1)
-  &#125;
-</code></pre>
+<blockquote>
+<p>// 1<br>
+执行顺序：<br>
+1、var test;<br>
+2、function test () {<br>
+console.log(2)<br>
+}<br>
+3、test = function () {<br>
+console.log(1)<br>
+}<br>
+</code></pre></p>
+</blockquote>
 </details>
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var test = &quot;1&quot;</span><br><span class="line"> </span><br><span class="line">function test () &#123;</span><br><span class="line">  console.log(2)</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+<hr>
+<pre class="language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> test <span class="token operator">=</span> <span class="token string">"1"</span>
+ 
+<span class="token keyword">function</span> <span class="token function">test</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+ 
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
 <details>
 <summary>查看答案</summary>
-<pre><code>
-  // typeError: test is not a function
-</code></pre>
+<blockquote>
+<p>typeError: test is not a function</p>
+</blockquote>
 </details>
                 
             </div>
@@ -518,6 +550,9 @@
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/interview/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/interview/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
